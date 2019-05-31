@@ -60,7 +60,7 @@ describe("Hero", () => {
       expect(this.subject.attackModifier).toBe(0)
     })
 
-    it("included the strength modifier", () => {
+    it("includes the strength modifier", () => {
       this.subject.strength.score = 14
       expect(this.subject.attackModifier).toBe(2)
     })
@@ -71,7 +71,7 @@ describe("Hero", () => {
       expect(this.subject.attackDamage).toBe(1)
     })
 
-    it("included the strength modifier", () => {
+    it("includes the strength modifier", () => {
       this.subject.strength.score = 14
       expect(this.subject.attackDamage).toBe(3)
     })
@@ -87,7 +87,7 @@ describe("Hero", () => {
       expect(this.subject.criticalDamage).toBe(2)
     })
 
-    it("included the strength modifier", () => {
+    it("includes the strength modifier", () => {
       this.subject.strength.score = 14
       expect(this.subject.criticalDamage).toBe(6)
     })
@@ -101,6 +101,16 @@ describe("Hero", () => {
   describe(".hitPoints", () => {
     it("defaults to 5", () => {
       expect(this.subject.hitPoints).toBe(5)
+    })
+
+    it("includes the constitution modifier", () => {
+      this.subject.constitution.score = 14
+      expect(this.subject.hitPoints).toBe(7)
+    })
+
+    it("must be at least 1", () => {
+      this.subject.constitution.score = 1
+      expect(this.subject.hitPoints).toBe(1)
     })
   })
 

@@ -7,6 +7,7 @@ class Hero {
 
     this._strength = new Ability()
     this._dexterity = new Ability()
+    this._constitution = new Ability()
     this._damage = 0
   }
 
@@ -37,6 +38,10 @@ class Hero {
     return this._dexterity
   }
 
+  get constitution() {
+    return this._constitution
+  }
+
   get armorClass() {
     return 10 + this.dexterity.modifier
   }
@@ -54,7 +59,7 @@ class Hero {
   }
 
   get hitPoints() {
-    return 5
+    return Math.max(1, 5 + this.constitution.modifier)
   }
 
   get currentHitPoints() {
