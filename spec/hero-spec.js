@@ -96,6 +96,19 @@ describe("Hero", () => {
       this.subject.strength.score = 14
       expect(this.subject.attackModifier).toBe(2)
     })
+
+    it("increase by 1 at 2nd level", () => {
+      this.subject.addExperience(1000)
+      expect(this.subject.attackModifier).toBe(1)
+    })
+
+    it("increase by 1 at every other level", () => {
+      this.subject.addExperience(2000)
+      expect(this.subject.attackModifier).toBe(1)
+
+      this.subject.addExperience(1000)
+      expect(this.subject.attackModifier).toBe(2)
+    })
   })
 
   describe(".attackDamage", () => {
@@ -143,6 +156,11 @@ describe("Hero", () => {
     it("must be at least 1", () => {
       this.subject.constitution.score = 1
       expect(this.subject.hitPoints).toBe(1)
+    })
+
+    it("is multiplied by level", () => {
+      this.subject.addExperience(4000)
+      expect(this.subject.hitPoints).toBe(25)
     })
   })
 

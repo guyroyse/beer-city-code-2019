@@ -57,7 +57,7 @@ class Hero {
   }
 
   get attackModifier() {
-    return this.strength.modifier
+    return Math.floor(this.level / 2) + this.strength.modifier
   }
 
   get attackDamage() {
@@ -69,7 +69,7 @@ class Hero {
   }
 
   get hitPoints() {
-    return Math.max(1, 5 + this.constitution.modifier)
+    return Math.max(1, 5 + this.constitution.modifier) * this.level
   }
 
   get currentHitPoints() {
