@@ -25,6 +25,10 @@ describe("Attack", () => {
       it("does not deal damage to the defender", () => {
         expect(this.defender.currentHitPoints).toBe(5)
       })
+
+      it("does not increase the attackers experience", () => {
+        expect(this.attacker.experience).toBe(0)
+      })
     })
 
     describe("when roll meets defender's armor class", () => {
@@ -43,6 +47,10 @@ describe("Attack", () => {
 
       it("deals attack damage to the defender", () => {
         expect(this.defender.currentHitPoints).toBe(2)
+      })
+
+      it("increases the attackers experience", () => {
+        expect(this.attacker.experience).toBe(10)
       })
     })
 
@@ -63,6 +71,10 @@ describe("Attack", () => {
       it("deals attack damage to the defender", () => {
         expect(this.defender.currentHitPoints).toBe(2)
       })
+
+      it("increases the attackers experience", () => {
+        expect(this.attacker.experience).toBe(10)
+      })
     })
 
     describe("when roll is a natural 20", () => {
@@ -81,6 +93,10 @@ describe("Attack", () => {
 
       it("deals critical damage to the defender", () => {
         expect(this.defender.currentHitPoints).toBe(-1)
+      })
+
+      it("increases the attackers experience", () => {
+        expect(this.attacker.experience).toBe(10)
       })
     })
 

@@ -44,6 +44,38 @@ describe("Hero", () => {
     })
   })
 
+  describe(".level", () => {
+    it("defaults to 1", () => {
+      expect(this.subject.level).toBe(1)
+    })
+
+    it("goes up by 1 at 1000 experience", () => {
+      this.subject.addExperience(999)
+      expect(this.subject.level).toBe(1)
+      this.subject.addExperience(1)
+      expect(this.subject.level).toBe(2)
+    })
+
+    it("goes up by 1 for every 1000 experience", () => {
+      this.subject.addExperience(3999)
+      expect(this.subject.level).toBe(4)
+      this.subject.addExperience(1)
+      expect(this.subject.level).toBe(5)
+    })
+  })
+
+  describe(".experience", () => {
+    it("defaults to 0", () => {
+      expect(this.subject.experience).toBe(0)
+    })
+
+    it("goes up when experience is added", () => {
+      this.subject.addExperience(40)
+      this.subject.addExperience(60)
+      expect(this.subject.experience).toBe(100)
+    })
+  })
+
   describe(".armorClass", () => {
     it("defaults to 10", () => {
       expect(this.subject.armorClass).toBe(10)

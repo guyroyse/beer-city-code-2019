@@ -8,7 +8,9 @@ class Hero {
     this._strength = new Ability()
     this._dexterity = new Ability()
     this._constitution = new Ability()
+
     this._damage = 0
+    this._experience = 0
   }
 
   get name() {
@@ -21,6 +23,14 @@ class Hero {
 
   get alignment() {
     return this._alignment
+  }
+
+  get level() {
+    return 1 + Math.floor(this.experience / 1000)
+  }
+
+  get experience() {
+    return this._experience
   }
 
   set alignment(value) {
@@ -72,6 +82,10 @@ class Hero {
 
   damage(points) {
     this._damage += points
+  }
+
+  addExperience(experience) {
+    this._experience += experience
   }
 }
 
