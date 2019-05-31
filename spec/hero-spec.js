@@ -48,6 +48,54 @@ describe("Hero", () => {
     it("defaults to 10", () => {
       expect(this.subject.armorClass).toBe(10)
     })
+
+    it("includes the dexterity modifier", () => {
+      this.subject.dexterity.score = 14
+      expect(this.subject.armorClass).toBe(12)
+    })
+  })
+
+  describe(".attackModifier", () => {
+    it("defaults to 0", () => {
+      expect(this.subject.attackModifier).toBe(0)
+    })
+
+    it("included the strength modifier", () => {
+      this.subject.strength.score = 14
+      expect(this.subject.attackModifier).toBe(2)
+    })
+  })
+
+  describe(".attackDamage", () => {
+    it("defaults to 1", () => {
+      expect(this.subject.attackDamage).toBe(1)
+    })
+
+    it("included the strength modifier", () => {
+      this.subject.strength.score = 14
+      expect(this.subject.attackDamage).toBe(3)
+    })
+
+    it("cannot be less than 1", () => {
+      this.subject.strength.score = 6
+      expect(this.subject.attackDamage).toBe(1)
+    })
+  })
+
+  describe(".criticalDamage", () => {
+    it("defaults to 2", () => {
+      expect(this.subject.criticalDamage).toBe(2)
+    })
+
+    it("included the strength modifier", () => {
+      this.subject.strength.score = 14
+      expect(this.subject.criticalDamage).toBe(6)
+    })
+
+    it("cannot be less than 1", () => {
+      this.subject.strength.score = 6
+      expect(this.subject.criticalDamage).toBe(1)
+    })
   })
 
   describe(".hitPoints", () => {

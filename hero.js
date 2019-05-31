@@ -1,8 +1,12 @@
+const Ability = require("./ability")
+
 class Hero {
   constructor() {
     this.name = ""
     this.alignment = "NEUTRAL"
 
+    this._strength = new Ability()
+    this._dexterity = new Ability()
     this._damage = 0
   }
 
@@ -25,8 +29,28 @@ class Hero {
     this._alignment = value
   }
 
+  get strength() {
+    return this._strength
+  }
+
+  get dexterity() {
+    return this._dexterity
+  }
+
   get armorClass() {
-    return 10
+    return 10 + this.dexterity.modifier
+  }
+
+  get attackModifier() {
+    return this.strength.modifier
+  }
+
+  get attackDamage() {
+    return Math.max(1, 1 + this.strength.modifier)
+  }
+
+  get criticalDamage() {
+    return Math.max(1, 2 + this.strength.modifier * 2)
   }
 
   get hitPoints() {
