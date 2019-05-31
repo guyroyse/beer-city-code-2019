@@ -2,6 +2,8 @@ class Hero {
   constructor() {
     this.name = ""
     this.alignment = "NEUTRAL"
+
+    this._damage = 0
   }
 
   get name() {
@@ -29,6 +31,18 @@ class Hero {
 
   get hitPoints() {
     return 5
+  }
+
+  get currentHitPoints() {
+    return this.hitPoints - this._damage
+  }
+
+  get isDead() {
+    return this.currentHitPoints <= 0
+  }
+
+  damage(points) {
+    this._damage += points
   }
 }
 

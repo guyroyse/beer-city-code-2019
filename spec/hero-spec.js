@@ -55,4 +55,36 @@ describe("Hero", () => {
       expect(this.subject.hitPoints).toBe(5)
     })
   })
+
+  describe(".currentHitPoints", () => {
+    it("defaults to 5", () => {
+      expect(this.subject.currentHitPoints).toBe(5)
+    })
+
+    it("goes down when damaged", () => {
+      this.subject.damage(2)
+      expect(this.subject.currentHitPoints).toBe(3)
+    })
+  })
+
+  describe(".isDead", () => {
+    it("defaults to false", () => {
+      expect(this.subject.isDead).toBe(false)
+    })
+
+    it("is false after damage", () => {
+      this.subject.damage(2)
+      expect(this.subject.isDead).toBe(false)
+    })
+
+    it("is true when damaged to 0 hit points", () => {
+      this.subject.damage(5)
+      expect(this.subject.isDead).toBe(true)
+    })
+
+    it("is true when damaged below 0 hit points", () => {
+      this.subject.damage(10)
+      expect(this.subject.isDead).toBe(true)
+    })
+  })
 })
